@@ -62,7 +62,7 @@ export function SidebarNavigation() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={
-              isSidebarCollapsed && windowSize.responsiveWidth > 1024
+              isSidebarCollapsed && windowSize.responsiveWidth >= 1024
                 ? "/icons/logo-small.svg"
                 : "/icons/logo-large.svg"
             }
