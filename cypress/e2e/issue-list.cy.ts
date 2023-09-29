@@ -44,7 +44,12 @@ describe("Issue List", () => {
           const firstLineOfStackTrace = issue.stack.split("\n")[1].trim();
           cy.wrap($el).contains(issue.name);
           cy.wrap($el).contains(issue.message);
-          cy.wrap($el).contains(issue.numEvents);
+          cy.wrap($el)
+            .contains(issue.numEvents)
+            .should("have.text", issue.numEvents);
+          cy.wrap($el)
+            .contains(issue.numUsers)
+            .should("have.text", issue.numUsers);
           cy.wrap($el).contains(firstLineOfStackTrace);
         });
     });
