@@ -3,3 +3,12 @@
 @use "@styles/breakpoint";
 @use "@styles/z-index";
 @use "@styles/misc";
+
+.container {
+  height: 60px;
+  color: color.$gray-500;
+}
+
+.content {
+  display: flex;
+}
