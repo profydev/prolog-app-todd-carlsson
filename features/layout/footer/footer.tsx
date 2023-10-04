@@ -7,7 +7,9 @@ export function Footer() {
   return (
     <footer className={classNames(styles.container)}>
       <div className={classNames(styles.content)}>
-        <div className={classNames(styles.footerText)}>Version: 14.5.1</div>
+        <div className={classNames(styles.footerText)}>
+          Version: {process.env.NEXT_PUBLIC_APP_VERSION}
+        </div>
         <div className={classNames(styles.footerLinks)}>
           <Link className={classNames(styles.footerLink)} href="#">
             Docs
