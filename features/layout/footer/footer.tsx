@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./footer.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -24,7 +25,9 @@ export function Footer() {
             Community
           </Link>
         </div>
-        <img
+        <Image
+          width={23}
+          height={33}
           className={classNames(styles.footerLogo)}
           src="/icons/logo-small.svg"
           alt="logo"

@@ -34,11 +34,6 @@ footer.container {
   text-decoration: none;
 }
 
-.footerLogo {
-  width: 23px;
-  height: 33px;
-}
-
 @media screen and (max-width: breakpoint.$desktop) {
   .content {
     flex-direction: column-reverse;
