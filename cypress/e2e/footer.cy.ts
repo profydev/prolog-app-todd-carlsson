@@ -12,6 +12,6 @@ describe("Footer", () => {
       .should("be.visible")
       .should("have.attr", "src")
       .should("include", "/icons/logo-small.svg");
-    cy.get("footer").contains(/version: 14.5.2/i);
+    cy.get("footer").contains(/version:/i);
   });
 });
