@@ -1,5 +1,6 @@
 @use "@styles/breakpoint";
 @use "@styles/space";
+@use "@styles/color";
 
 .list {
   display: grid;
@@ -13,5 +14,25 @@
 
   @media (min-width: breakpoint.$desktop) {
     grid-template-columns: repeat(auto-fit, 400px);
+  }
+}
+
+.loader {
+  margin: auto;
+  border: 8px solid color.$primary-50;
+  border-radius: 50%;
+  border-top: 8px solid color.$primary-600;
+  width: 58px;
+  height: 58px;
+  animation: spinner 4s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

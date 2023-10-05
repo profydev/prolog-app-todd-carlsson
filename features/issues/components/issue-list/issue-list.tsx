@@ -18,6 +18,7 @@ export function IssueList() {
   const projects = useGetProjects();
 
   if (projects.isLoading || issuesPage.isLoading) {
+    //LOADING SCREEN GOES HERE
     return <div>Loading</div>;
   }
 

@@ -6,7 +6,8 @@ export function ProjectList() {
   const { data, isLoading, isError, error } = useGetProjects();
 
   if (isLoading) {
-    return <div>Loading</div>;
+    //LOADING SCREEN GOES HERE
+    return <div className={styles.loader} />;
   }
 
   if (isError) {
