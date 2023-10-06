@@ -20,7 +20,7 @@ export function IssueList() {
 
   if (projects.isLoading || issuesPage.isLoading) {
     return (
-      <div className={styles.loaderContainer}>
+      <div data-test="image-loader" className={styles.loaderContainer}>
         <Image
           height={66}
           width={66}
