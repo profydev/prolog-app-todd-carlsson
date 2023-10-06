@@ -1,6 +1,7 @@
 @use "@styles/breakpoint";
 @use "@styles/space";
 @use "@styles/color";
+@use "@styles/font";
 
 .list {
   display: grid;
@@ -37,4 +38,36 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.errorContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  background-color: color.$error-25;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid color.$error-300;
+  color: color.$error-700;
+  font: font.$text-sm-medium;
+}
+
+.errorLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 20px;
+}
+
+button.errorButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: color.$error-700;
+  font: font.$text-sm-medium;
+  line-height: 20px;
+  cursor: pointer;
 }
