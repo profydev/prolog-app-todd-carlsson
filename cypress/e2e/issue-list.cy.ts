@@ -21,6 +21,13 @@ describe("Issue List", () => {
     // open issues page
     cy.visit(`http://localhost:3000/dashboard/issues`);
 
+    //check for loader before request resolves
+    cy.get('[data-test="image-loader"]')
+      .find("img")
+      .should("be.visible")
+      .should("have.attr", "src")
+      .should("include", "/icons/loader.svg");
+
     // wait for request to resolve
     cy.wait(["@getProjects", "@getIssuesPage1"]);
     cy.wait(500);

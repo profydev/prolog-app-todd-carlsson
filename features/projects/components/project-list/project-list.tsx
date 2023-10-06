@@ -1,12 +1,23 @@
 import { ProjectCard } from "../project-card";
 import { useGetProjects } from "../../api/use-get-projects";
 import styles from "./project-list.module.scss";
+import Image from "next/image";
 
 export function ProjectList() {
   const { data, isLoading, isError, error } = useGetProjects();
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return (
+      <div data-test="image-loader" className={styles.loaderContainer}>
+        <Image
+          height={66}
+          width={66}
+          className={styles.loader}
+          src="/icons/loader.svg"
+          alt="loader"
+        />
+      </div>
+    );
   }
 
   if (isError) {

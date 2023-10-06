@@ -3,6 +3,7 @@ import { ProjectLanguage } from "@api/projects.types";
 import { useGetProjects } from "@features/projects";
 import { useGetIssues } from "../../api/use-get-issues";
 import { IssueRow } from "./issue-row";
+import Image from "next/image";
 import styles from "./issue-list.module.scss";
 
 export function IssueList() {
@@ -18,7 +19,17 @@ export function IssueList() {
   const projects = useGetProjects();
 
   if (projects.isLoading || issuesPage.isLoading) {
-    return <div>Loading</div>;
+    return (
+      <div data-test="image-loader" className={styles.loaderContainer}>
+        <Image
+          height={66}
+          width={66}
+          className={styles.loader}
+          src="/icons/loader.svg"
+          alt="loader"
+        />
+      </div>
+    );
   }
 
   if (projects.isError) {
