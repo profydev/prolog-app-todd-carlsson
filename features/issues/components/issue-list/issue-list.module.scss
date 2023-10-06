@@ -64,19 +64,19 @@
   height: 300px;
   display: flex;
   justify-content: center;
-}
 
-.loader {
-  margin: auto;
-  animation: spinner 2s linear infinite;
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotate(0deg);
+  .loader {
+    margin: auto;
+    animation: spinner 2s linear infinite;
   }
 
-  100% {
-    transform: rotate(360deg);
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
