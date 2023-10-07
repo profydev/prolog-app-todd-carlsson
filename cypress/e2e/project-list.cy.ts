@@ -78,5 +78,35 @@ describe("Project List", () => {
             .should("have.attr", "href", "/dashboard/issues");
         });
     });
+
+    it("Check for an error screen if error has occured", () => {
+      cy.visit("http://localhost:3000/dashboard");
+      //create a network error
+      cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+        fixture: "projects.json",
+        forceNetworkError: true,
+      }).as("getData");
+
+      //wait for loading to resolve
+      cy.wait("@getData");
+      cy.wait(10000);
+
+      //Check for correct error message and test if the try again button works
+      cy.contains(/there was a problem while loading the project data/i);
+      cy.get('[data-test="error-retry-button"]').click();
+
+      //check for loader before request resolves
+      cy.get('[data-test="image-loader"]')
+        .find("img")
+        .should("be.visible")
+        .should("have.attr", "src")
+        .should("include", "/icons/loader.svg");
+
+      //check that the error message and button does not exist
+      cy.contains("There was a problem while loading the project data").should(
+        "not.exist",
+      );
+      cy.get('[data-test="error-retry-button"]').should("not.exist");
+    });
   });
 });

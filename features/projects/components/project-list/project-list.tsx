@@ -5,7 +5,6 @@ import Image from "next/image";
 
 export function ProjectList() {
   const { data, isLoading, isError, error, retryFetch } = useGetProjects();
-  console.log(data);
 
   if (isLoading) {
     return (
@@ -34,7 +33,11 @@ export function ProjectList() {
           />
           <p>There was a problem while loading the project data</p>
         </div>
-        <button onClick={retryFetch} className={styles.errorButton}>
+        <button
+          data-test="error-retry-button"
+          onClick={retryFetch}
+          className={styles.errorButton}
+        >
           Try Again
           <Image
             height={20}
