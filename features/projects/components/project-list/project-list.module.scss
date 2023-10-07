@@ -1,6 +1,7 @@
 @use "@styles/breakpoint";
 @use "@styles/space";
 @use "@styles/color";
+@use "@styles/font";
 
 .list {
   display: grid;
@@ -22,19 +23,64 @@
   height: 300px;
   display: flex;
   justify-content: center;
-}
 
-.loader {
-  margin: auto;
-  animation: spinner 2s linear infinite;
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotate(0deg);
+  .loader {
+    margin: auto;
+    animation: spinner 2s linear infinite;
   }
 
-  100% {
-    transform: rotate(360deg);
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.errorContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  height: auto;
+  background-color: color.$error-25;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid color.$error-300;
+  color: color.$error-700;
+  font: font.$text-sm-medium;
+
+  .errorLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 20px;
+    overflow-wrap: break-word;
+
+    p {
+      line-height: 20px;
+      margin: 0;
+    }
+
+    @media (max-width: breakpoint.$desktop) {
+      height: auto;
+    }
+  }
+
+  button.errorButton {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 8px;
+    padding: 0;
+    height: 20px;
+    background: none;
+    border: none;
+    color: color.$error-700;
+    font: font.$text-sm-medium;
+    cursor: pointer;
   }
 }

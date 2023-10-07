@@ -4,7 +4,7 @@ import styles from "./project-list.module.scss";
 import Image from "next/image";
 
 export function ProjectList() {
-  const { data, isLoading, isError, error } = useGetProjects();
+  const { data, isLoading, isError, error, retryFetch } = useGetProjects();
 
   if (isLoading) {
     return (
@@ -22,7 +22,32 @@ export function ProjectList() {
 
   if (isError) {
     console.error(error);
-    return <div>Error: {error.message}</div>;
+    return (
+      <div className={styles.errorContainer}>
+        <div className={styles.errorLeft}>
+          <Image
+            height={20}
+            width={20}
+            src="/icons/alert-circle.svg"
+            alt="alert icon"
+          />
+          <p>There was a problem while loading the project data</p>
+        </div>
+        <button
+          data-test="error-retry-button"
+          onClick={retryFetch}
+          className={styles.errorButton}
+        >
+          Try Again
+          <Image
+            height={20}
+            width={20}
+            src="/icons/arrow-right.svg"
+            alt="arrow button"
+          />
+        </button>
+      </div>
+    );
   }
 
   return (
