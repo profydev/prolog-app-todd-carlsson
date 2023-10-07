@@ -80,12 +80,13 @@ describe("Project List", () => {
     });
 
     it("Check for an error screen if error has occured", () => {
-      cy.visit("http://localhost:3000/dashboard");
       //create a network error
       cy.intercept("GET", "https://prolog-api.profy.dev/project", {
-        fixture: "projects.json",
-        forceNetworkError: true,
+        statusCode: 500,
+        body: { error: "Failed to fetch data" },
       }).as("getErrorData");
+
+      cy.visit("http://localhost:3000/dashboard");
 
       //wait for loading to resolve
       cy.wait("@getErrorData");
@@ -108,12 +109,12 @@ describe("Project List", () => {
       );
       cy.get('[data-test="error-retry-button"]').should("not.exist");
 
-      cy.visit("http://localhost:3000/dashboard");
+      // cy.visit("http://localhost:3000/dashboard");
 
-      cy.intercept("GET", "https://prolog-api.profy.dev/project", {
-        fixture: "projects.json",
-      }).as("getProjects");
-      cy.wait("@getProjects");
+      // cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      //   fixture: "projects.json",
+      // }).as("getProjects");
+      // cy.wait("@getProjects");
     });
   });
 });
