@@ -85,10 +85,10 @@ describe("Project List", () => {
       cy.intercept("GET", "https://prolog-api.profy.dev/project", {
         fixture: "projects.json",
         forceNetworkError: true,
-      }).as("getData");
+      }).as("getErrorData");
 
       //wait for loading to resolve
-      cy.wait("@getData");
+      cy.wait("@getErrorData");
       cy.wait(10000);
 
       //Check for correct error message and test if the try again button works
@@ -109,6 +109,11 @@ describe("Project List", () => {
       cy.get('[data-test="error-retry-button"]').should("not.exist");
 
       cy.visit("http://localhost:3000/dashboard");
+
+      cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+        fixture: "projects.json",
+      }).as("getProjects");
+      cy.wait("@getProjects");
     });
   });
 });
