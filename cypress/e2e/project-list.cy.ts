@@ -107,6 +107,8 @@ describe("Project List", () => {
         "not.exist",
       );
       cy.get('[data-test="error-retry-button"]').should("not.exist");
+
+      cy.visit("http://localhost:3000/dashboard");
     });
   });
 });
