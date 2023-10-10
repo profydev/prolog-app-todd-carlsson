@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 import styles from "./button.module.scss";
 
@@ -21,11 +21,13 @@ export enum ButtonColor {
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: ButtonSize;
   color?: ButtonColor;
+  children: React.ReactNode | string | number;
 };
 
 export function Button({
   size = ButtonSize.small,
   color = ButtonColor.primary,
+  children,
   ...props
 }: ButtonProps) {
   return (
@@ -44,6 +46,8 @@ export function Button({
         [styles.emptyGray]: color === ButtonColor.emptyGray,
         [styles.error]: color === ButtonColor.error,
       })}
-    />
+    >
+      {children}
+    </button>
   );
 }

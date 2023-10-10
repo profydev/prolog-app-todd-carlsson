@@ -6,6 +6,21 @@ const meta = {
   title: "UI/Button",
   tags: ["autodocs"],
   argTypes: {
+    children: {
+      control: { type: "select" },
+      options: [
+        "Button CTA",
+        [
+          <img key={1} width={20} height={20} src="/icons/react.svg" />,
+          "Button CTA",
+        ],
+        [
+          "Button CTA",
+          <img key={1} width={20} height={20} src="/icons/react.svg" />,
+        ],
+        <img key={1} width={20} height={20} src="/icons/react.svg" />,
+      ],
+    },
     size: {
       control: { type: "select" },
       options: ["small", "medium", "large", "xLarge"],
@@ -16,7 +31,6 @@ const meta = {
     },
     disabled: {
       control: "boolean",
-      options: [false, true],
     },
   },
 } satisfies Meta<typeof Button>;
@@ -86,5 +100,28 @@ export const error: Story = {
   args: {
     color: ButtonColor.error,
     children: "Button CTA",
+  },
+};
+
+/**Button Icon Variations */
+export const leadingIcon: Story = {
+  args: {
+    children: [
+      <img key={1} width={20} height={20} src="/icons/react.svg" />,
+      "Button CTA",
+    ],
+  },
+};
+export const trailingIcon: Story = {
+  args: {
+    children: [
+      "Button CTA",
+      <img key={1} width={20} height={20} src="/icons/react.svg" />,
+    ],
+  },
+};
+export const iconOnly: Story = {
+  args: {
+    children: <img key={1} width={20} height={20} src="/icons/react.svg" />,
   },
 };
