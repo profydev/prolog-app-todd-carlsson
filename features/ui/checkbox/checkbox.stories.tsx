@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox } from "./checkbox";
+import { Meta, StoryObj } from "@storybook/react";
+import { Checkbox, CheckboxSizes } from "./checkbox";
 
 const meta = {
   component: Checkbox,
@@ -10,4 +10,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Base: Story = {};
+export const small: Story = {
+  args: {
+    children: "Label",
+    size: CheckboxSizes.small,
+  },
+};
+export const medium: Story = {
+  args: {
+    children: "Label",
+    size: CheckboxSizes.medium,
+  },
+};
