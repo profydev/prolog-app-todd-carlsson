@@ -4,6 +4,11 @@ import { Checkbox, CheckboxSizes } from "./checkbox";
 const meta = {
   component: Checkbox,
   title: "UI/Checkbox",
+  argTypes: {
+    disabled: {
+      control: "boolean",
+    },
+  },
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
