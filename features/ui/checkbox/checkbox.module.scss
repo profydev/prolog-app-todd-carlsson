@@ -1,0 +1,108 @@
+@use "@styles/color";
+@use "@styles/font";
+
+.customLabel {
+  width: fit-content;
+  cursor: pointer;
+  color: color.$gray-700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label.small {
+  font: font.$text-sm-medium;
+}
+
+label.medium {
+  font: font.$text-md-medium;
+}
+
+label.disabled {
+  color: color.$gray-300;
+}
+
+input[type="checkbox"].customInput {
+  /* Remove most native input styles */
+  appearance: none;
+  background-color: #fff;
+  margin-top: 1px;
+  color: currentcolor;
+  border: 1px solid color.$gray-300;
+  transform: translateY(-0.075em);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid color.$primary-600;
+    background-color: color.$primary-50;
+  }
+
+  &::before {
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: scale(0);
+  }
+
+  &:focus {
+    border: 1px solid color.$primary-300;
+    box-shadow: 0 0 0 4px color.$primary-100;
+  }
+
+  &:checked {
+    border: 1px solid color.$primary-600;
+    background-color: color.$primary-50;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+
+  &:disabled {
+    background-color: color.$gray-100;
+    border: 1px solid color.$gray-200;
+  }
+}
+
+// SMALL CHECKBOX
+.small input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  padding: 2px;
+  margin-right: 0.5rem;
+
+  &::before {
+    width: 12px;
+    height: 12px;
+    background-image: var(--url-img);
+  }
+}
+
+// MEDIUM CHECKBOX
+.medium input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 6px;
+  padding: 3px;
+  margin-right: 0.75rem;
+
+  &::before {
+    width: 14px;
+    height: 14px;
+    background-image: var(--url-img);
+    background-size: contain;
+  }
+}
+
+// INDETERMINATE CHECKBOX
+.indeterminate input[type="checkbox"] {
+  &::before {
+    width: 12px;
+    height: 12px;
+    background-image: var(--url-img-indeterminate);
+  }
+}
