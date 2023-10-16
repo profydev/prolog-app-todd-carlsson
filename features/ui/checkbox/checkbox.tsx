@@ -9,29 +9,45 @@ export enum CheckboxSizes {
 
 export interface CustomCSS extends CSSProperties {
   "--url-img": string;
+  "--url-img-indeterminate": string;
 }
 
 type CheckboxProps = {
-  children: string | number;
+  label: string;
   size?: CheckboxSizes;
   disabled?: boolean;
   indeterminate?: boolean;
+  name?: string;
 };
 
 export function Checkbox({
-  children,
+  label,
   size = CheckboxSizes.small,
   disabled = false,
   indeterminate = false,
+  name = "checkbox",
   ...props
 }: CheckboxProps) {
   const checkboxRef = useRef<HTMLInputElement>(null);
 
-  const indeterminateUrl = {
+  const checkboxImgUrl = {
+    "--url-img-indeterminate":
+      size === CheckboxSizes.small
+        ? !disabled
+          ? "url('/icons/check-partial-small.svg')"
+          : "url('/icons/check-partial-small-disabled.svg')"
+        : !disabled
+        ? "url('/icons/check-partial-medium.svg')"
+        : "url('/icons/check-partial-medium-disabled.svg')",
+
     "--url-img":
       size === CheckboxSizes.small
-        ? "url('/icons/check-partial-small.svg')"
-        : "url('/icons/check-partial-medium.svg')",
+        ? !disabled
+          ? "url('/icons/check-small.svg')"
+          : "url('/icons/check-small-disabled.svg')"
+        : !disabled
+        ? "url('/icons/check-medium.svg')"
+        : "url('/icons/check-medium-disabled.svg')",
   } as CustomCSS;
 
   useEffect(() => {
@@ -46,18 +62,18 @@ export function Checkbox({
         [styles.small]: size === CheckboxSizes.small,
         [styles.medium]: size === CheckboxSizes.medium,
 
-        [styles.disabled]: disabled === true,
         [styles.indeterminate]: indeterminate === true,
+        [styles.disabled]: disabled === true,
       })}
     >
       <input
         type="checkbox"
-        name="checkbox"
-        style={indeterminateUrl}
+        name={name}
+        style={checkboxImgUrl}
         disabled={disabled}
         ref={checkboxRef}
       />
-      {children}
+      {label}
     </label>
   );
 }

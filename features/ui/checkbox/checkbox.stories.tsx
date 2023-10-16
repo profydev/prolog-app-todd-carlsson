@@ -14,19 +14,19 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Checkbox>;
 
 /**CHECKBOX SIZES */
 
 export const small: Story = {
   args: {
-    children: "Label",
+    label: "Label",
     size: CheckboxSizes.small,
   },
 };
 export const medium: Story = {
   args: {
-    children: "Label",
+    label: "Label",
     size: CheckboxSizes.medium,
   },
 };
@@ -35,14 +35,14 @@ export const medium: Story = {
 
 export const indeterminateSmall: Story = {
   args: {
-    children: "Label",
+    label: "Label",
     size: CheckboxSizes.small,
     indeterminate: true,
   },
 };
 export const indeterminateMedium: Story = {
   args: {
-    children: "Label",
+    label: "Label",
     size: CheckboxSizes.medium,
     indeterminate: true,
   },
