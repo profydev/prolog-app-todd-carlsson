@@ -58,7 +58,7 @@ export function Checkbox({
   return (
     <label
       {...props}
-      className={classNames(styles.customCheckbox, {
+      className={classNames(styles.customLabel, {
         [styles.small]: size === CheckboxSizes.small,
         [styles.medium]: size === CheckboxSizes.medium,
 
@@ -68,6 +68,7 @@ export function Checkbox({
     >
       <input
         type="checkbox"
+        className={classNames(styles.customInput)}
         name={name}
         style={checkboxImgUrl}
         disabled={disabled}

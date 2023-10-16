@@ -1,7 +1,7 @@
 @use "@styles/color";
 @use "@styles/font";
 
-.customCheckbox {
+.customLabel {
   width: fit-content;
   cursor: pointer;
   color: color.$gray-700;
@@ -22,7 +22,7 @@ label.disabled {
   color: color.$gray-300;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"].customInput {
   /* Remove most native input styles */
   appearance: none;
   background-color: #fff;
