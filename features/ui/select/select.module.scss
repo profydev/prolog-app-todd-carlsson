@@ -24,9 +24,6 @@
   font: font.$text-md-regular;
   text-transform: capitalize;
   color: color.$gray-900;
-
-  // height: 60px;
-  // line-height: 60px;
   background: #fff;
   cursor: pointer;
   border: 1px solid color.$gray-300;
@@ -54,8 +51,17 @@
   cursor: default;
 }
 
+.selectTriggerContent {
+  display: flex;
+  align-items: center;
+}
+
 .empty {
   color: color.$gray-500;
+}
+
+.icon {
+  margin-right: space.$s2;
 }
 
 .customOptions {

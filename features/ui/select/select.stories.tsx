@@ -31,17 +31,6 @@ export const select: Story = {
       />
     </div>
   ),
-  // args: {
-  //     options: [
-  //         "Phoenix Baker",
-  //         "Olivia Rhye",
-  //         "Lana Steiner",
-  //         "Demi Wilkinson",
-  //         "Candice Wu",
-  //         "Natali Craig",
-  //         "Drew Cano"
-  //     ]
-  // }
 };
 export const selectDisabled: Story = {
   render: () => (
@@ -57,6 +46,24 @@ export const selectDisabled: Story = {
           "Drew Cano",
         ]}
         disabled
+      />
+    </div>
+  ),
+};
+export const selectIcon: Story = {
+  render: () => (
+    <div style={{ width: 320 }}>
+      <Select
+        options={[
+          "Phoenix Baker",
+          "Olivia Rhye",
+          "Lana Steiner",
+          "Demi Wilkinson",
+          "Candice Wu",
+          "Natali Craig",
+          "Drew Cano",
+        ]}
+        iconSrc="/icons/user.svg"
       />
     </div>
   ),

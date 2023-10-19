@@ -8,11 +8,13 @@ type SelectProps = {
   options: string[];
   emptyText?: string;
   disabled?: boolean;
+  iconSrc?: string;
 };
 
 export function Select({
   options,
   emptyText = "Choose an Option",
+  iconSrc,
   disabled = false,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +34,18 @@ export function Select({
             disabled ? styles.disabled : "",
           )}
         >
-          <span>{selectedOption}</span>
+          <span className={classNames(styles.selectTriggerContent)}>
+            {iconSrc && (
+              <Image
+                className={classNames(styles.icon)}
+                height={20}
+                width={20}
+                src={iconSrc}
+                alt="icon"
+              />
+            )}
+            {selectedOption}
+          </span>
           <Image
             style={{ transform: !isOpen ? "rotate(180deg)" : "" }}
             src="/icons/chevron.svg"
