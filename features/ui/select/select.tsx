@@ -9,12 +9,16 @@ type SelectProps = {
   emptyText?: string;
   disabled?: boolean;
   iconSrc?: string;
+  label?: string;
+  hint?: string;
 };
 
 export function Select({
   options,
   emptyText = "Choose an Option",
   iconSrc,
+  label,
+  hint,
   disabled = false,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +29,7 @@ export function Select({
       onClick={() => !disabled && setIsOpen(!isOpen)}
       className={classNames(styles.selectWrapper)}
     >
+      {label && <div className={classNames(styles.label)}>{label}</div>}
       <div className={classNames(styles.select, isOpen && styles.open)}>
         <div
           className={classNames(
@@ -78,6 +83,7 @@ export function Select({
           ))}
         </div>
       </div>
+      {hint && <div className={classNames(styles.hint)}>{hint}</div>}
     </div>
   );
 }
