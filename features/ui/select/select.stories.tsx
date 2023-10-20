@@ -4,7 +4,17 @@ import { Select } from "./select";
 const meta = {
   component: Select,
   title: "UI/Select",
+  tags: ["autodocs"],
   argTypes: {
+    iconSrc: {
+      control: "select",
+      options: [
+        "/icons/user.svg",
+        "/icons/node.svg",
+        "/icons/python.svg",
+        "/icons/react.svg",
+      ],
+    },
     disabled: {
       control: "boolean",
     },
@@ -26,45 +36,48 @@ const optionsArr = [
 ];
 
 export const select: Story = {
+  args: {
+    options: optionsArr,
+  },
+};
+export const selectWithContainer: Story = {
   render: () => (
     <div style={{ width: 320 }}>
       <Select options={optionsArr} />
     </div>
   ),
 };
-export const selectDisabled: Story = {
-  render: () => (
-    <div style={{ width: 320 }}>
-      <Select options={optionsArr} disabled />
-    </div>
-  ),
+export const disabled: Story = {
+  args: {
+    options: optionsArr,
+    disabled: true,
+  },
 };
-export const selectIcon: Story = {
-  render: () => (
-    <div style={{ width: 320 }}>
-      <Select options={optionsArr} iconSrc="/icons/user.svg" />
-    </div>
-  ),
+export const icon: Story = {
+  args: {
+    options: optionsArr,
+    iconSrc: "/icons/user.svg",
+  },
 };
-export const selectLabel: Story = {
-  render: () => (
-    <div style={{ width: 320 }}>
-      <Select
-        options={optionsArr}
-        iconSrc="/icons/user.svg"
-        label="Team Member"
-      />
-    </div>
-  ),
+export const label: Story = {
+  args: {
+    options: optionsArr,
+    iconSrc: "/icons/user.svg",
+    label: "Team member",
+  },
 };
-export const selectHint: Story = {
-  render: () => (
-    <div style={{ width: 320 }}>
-      <Select
-        options={optionsArr}
-        label="Team Member"
-        hint="This is a hint text to help user."
-      />
-    </div>
-  ),
+export const hint: Story = {
+  args: {
+    options: optionsArr,
+    label: "Team member",
+    hint: "This is a hint text to help user.",
+  },
+};
+export const error: Story = {
+  args: {
+    options: optionsArr,
+    label: "Team member",
+    hint: "This is a hint text to help user.",
+    errorMessage: "This is a error message.",
+  },
 };

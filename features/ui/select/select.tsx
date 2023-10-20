@@ -11,6 +11,7 @@ type SelectProps = {
   iconSrc?: string;
   label?: string;
   hint?: string;
+  errorMessage?: string;
 };
 
 export function Select({
@@ -19,10 +20,13 @@ export function Select({
   iconSrc,
   label,
   hint,
+  errorMessage,
   disabled = false,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(emptyText);
+  const [selectedOption, setSelectedOption] = useState(
+    emptyText.length ? emptyText : "Choose an Option",
+  );
 
   return (
     <div
@@ -31,11 +35,14 @@ export function Select({
     >
       {label && <div className={classNames(styles.label)}>{label}</div>}
       <div className={classNames(styles.select, isOpen && styles.open)}>
-        <div
+        <button
           className={classNames(
             styles.selectTrigger,
-            selectedOption === emptyText ? styles.empty : "",
-            isOpen ? styles.focus : "",
+            errorMessage ? styles.error : "",
+            selectedOption === emptyText ||
+              selectedOption === "Choose an Option"
+              ? styles.empty
+              : "",
             disabled ? styles.disabled : "",
           )}
         >
@@ -58,7 +65,7 @@ export function Select({
             width={20}
             alt="arrow"
           />
-        </div>
+        </button>
         <div className={classNames(styles.customOptions)}>
           {options.map((item: string) => (
             <span
@@ -70,7 +77,18 @@ export function Select({
               )}
               data-value={item}
             >
-              {item}
+              <div className={classNames(styles.customOptionContent)}>
+                {iconSrc && (
+                  <Image
+                    className={classNames(styles.icon)}
+                    height={20}
+                    width={20}
+                    src={iconSrc}
+                    alt="icon"
+                  />
+                )}
+                {item}
+              </div>
               {selectedOption === item && (
                 <Image
                   src="/icons/check-select.svg"
@@ -83,7 +101,12 @@ export function Select({
           ))}
         </div>
       </div>
-      {hint && <div className={classNames(styles.hint)}>{hint}</div>}
+      {hint && !errorMessage && (
+        <p className={classNames(styles.hint)}>{hint}</p>
+      )}
+      {errorMessage && (
+        <p className={classNames(styles.errorMessage)}>{errorMessage}</p>
+      )}
     </div>
   );
 }

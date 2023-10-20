@@ -29,19 +29,13 @@
   border: 1px solid color.$gray-300;
   border-radius: 8px;
 
-  &:active {
+  &:focus {
+    outline: none;
     border: 1px solid color.$primary-300;
     box-shadow:
-      0 0 0 4px #f4ebff,
+      0 0 0 4px color.$primary-100,
       misc.$shadow-xs;
   }
-}
-
-.selectTrigger.focus {
-  border: 1px solid color.$primary-300;
-  box-shadow:
-    0 0 0 4px #f4ebff,
-    misc.$shadow-xs;
 }
 
 .selectTrigger.disabled {
@@ -49,6 +43,23 @@
   border: 1px solid color.$gray-300;
   color: color.$gray-500;
   cursor: default;
+
+  &:focus {
+    outline: none;
+    border: 1px solid color.$gray-300;
+    box-shadow: none;
+  }
+}
+
+.selectTrigger.error {
+  border: 1px solid color.$error-300;
+
+  &:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 4px color.$error-100,
+      misc.$shadow-xs;
+  }
 }
 
 .selectTriggerContent {
@@ -67,13 +78,22 @@
 .label {
   font: font.$text-sm-medium;
   color: color.$gray-700;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  letter-spacing: 0.45px;
 }
 
 .hint {
   font: font.$text-sm-regular;
   color: color.$gray-500;
-  margin-top: 6px;
+  margin-top: 5px;
+  letter-spacing: 0.4px;
+}
+
+.errorMessage {
+  font: font.$text-sm-regular;
+  color: color.$error-500;
+  margin-top: 5px;
+  letter-spacing: 0.35px;
 }
 
 .customOptions {
@@ -89,6 +109,8 @@
   visibility: hidden;
   pointer-events: none;
   z-index: 2;
+  overflow: auto;
+  max-height: 320px;
 }
 
 .select.open .customOptions {
@@ -112,6 +134,11 @@
 .customOption:hover {
   cursor: pointer;
   background-color: color.$primary-25;
+}
+
+.customOptionContent {
+  display: flex;
+  align-items: center;
 }
 
 .customOption.selected {
