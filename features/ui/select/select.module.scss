@@ -1,0 +1,146 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+@use "@styles/misc";
+
+.selectWrapper {
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.selectTrigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font: font.$text-md-regular;
+  text-transform: capitalize;
+  color: color.$gray-900;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid color.$gray-300;
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid color.$primary-300;
+    box-shadow:
+      0 0 0 4px color.$primary-100,
+      misc.$shadow-xs;
+  }
+}
+
+.selectTrigger.disabled {
+  background: color.$gray-50;
+  border: 1px solid color.$gray-300;
+  color: color.$gray-500;
+  cursor: default;
+
+  &:focus {
+    outline: none;
+    border: 1px solid color.$gray-300;
+    box-shadow: none;
+  }
+}
+
+.selectTrigger.error {
+  border: 1px solid color.$error-300;
+
+  &:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 4px color.$error-100,
+      misc.$shadow-xs;
+  }
+}
+
+.selectTriggerContent {
+  display: flex;
+  align-items: center;
+}
+
+.empty {
+  color: color.$gray-500;
+}
+
+.icon {
+  margin-right: space.$s2;
+}
+
+.label {
+  font: font.$text-sm-medium;
+  color: color.$gray-700;
+  margin-bottom: 5px;
+  letter-spacing: 0.45px;
+}
+
+.hint {
+  font: font.$text-sm-regular;
+  color: color.$gray-500;
+  margin-top: 5px;
+  letter-spacing: 0.4px;
+}
+
+.errorMessage {
+  font: font.$text-sm-regular;
+  color: color.$error-500;
+  margin-top: 5px;
+  letter-spacing: 0.35px;
+}
+
+.customOptions {
+  position: absolute;
+  display: block;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: space.$s2;
+  box-shadow: misc.$shadow-xs;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 2;
+  overflow: auto;
+  max-height: 320px;
+}
+
+.select.open .customOptions {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.customOption {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  font: font.$text-md-regular;
+  text-transform: capitalize;
+  color: color.$gray-900;
+  cursor: pointer;
+}
+
+.customOption:hover {
+  cursor: pointer;
+  background-color: color.$primary-25;
+}
+
+.customOptionContent {
+  display: flex;
+  align-items: center;
+}
+
+.customOption.selected {
+  background-color: color.$primary-25;
+}
