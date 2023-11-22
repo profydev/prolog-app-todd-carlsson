@@ -13,11 +13,12 @@ export interface CustomCSS extends CSSProperties {
 }
 
 type CheckboxProps = {
-  label: string;
+  label?: string;
   size?: CheckboxSizes;
   disabled?: boolean;
   indeterminate?: boolean;
   name?: string;
+  checked?: boolean;
 };
 
 export function Checkbox({
@@ -26,6 +27,7 @@ export function Checkbox({
   disabled = false,
   indeterminate = false,
   name = "checkbox",
+  checked,
   ...props
 }: CheckboxProps) {
   const checkboxRef = useRef<HTMLInputElement>(null);
@@ -57,7 +59,6 @@ export function Checkbox({
   }, [indeterminate]);
   return (
     <label
-      {...props}
       className={classNames(styles.customLabel, {
         [styles.small]: size === CheckboxSizes.small,
         [styles.medium]: size === CheckboxSizes.medium,
@@ -67,12 +68,14 @@ export function Checkbox({
       })}
     >
       <input
+        {...props}
         type="checkbox"
         className={classNames(styles.customInput)}
         name={name}
         style={checkboxImgUrl}
         disabled={disabled}
         ref={checkboxRef}
+        checked={checked}
       />
       {label}
     </label>
