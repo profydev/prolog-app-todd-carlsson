@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Checkbox, CheckboxSizes } from "./checkbox";
-
 const meta = {
   component: Checkbox,
   title: "UI/Checkbox",

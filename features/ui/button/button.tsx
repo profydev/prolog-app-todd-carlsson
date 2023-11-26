@@ -16,6 +16,7 @@ export enum ButtonColor {
   empty = "empty",
   emptyGray = "emptyGray",
   error = "error",
+  clear = "clear",
 }
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -26,7 +27,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export function Button({
   size = ButtonSize.small,
-  color = ButtonColor.primary,
+  color = ButtonColor.clear,
   children,
   ...props
 }: ButtonProps) {
@@ -45,6 +46,7 @@ export function Button({
         [styles.empty]: color === ButtonColor.empty,
         [styles.emptyGray]: color === ButtonColor.emptyGray,
         [styles.error]: color === ButtonColor.error,
+        [styles.clear]: color === ButtonColor.clear,
       })}
     >
       {children}

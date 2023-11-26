@@ -170,3 +170,9 @@
     border: 1px solid color.$error-200;
   }
 }
+
+.clear {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
